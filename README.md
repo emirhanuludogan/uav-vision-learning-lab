@@ -14,6 +14,8 @@ Bu repo üçüncü sınıf düzeyinde bir görüntü işleme öğrenme portföy�
 
 **[Kaggle'da gerçekten çalıştırılmış notebook arşivi](notebooks/archive/2026-11-24_kaggle_uavid_original.ipynb):** kullanıcıdan alınan kod hücreleri ve kayıtlı metin çıktıları korunur; bir gömülü veri görseli çıkarılmıştır. [Arşiv notları](notebooks/archive/README.md), [3 epoch sonuç tablosu](docs/experiments/2026-11-24_kaggle-baseline.csv), [eğitim logu](docs/experiments/2026-11-24_kaggle-training-log.txt). Arşivde Run All doğrudan eğitim başlatır; kontrollü kullanım için yukarıdaki taşınabilir notebook'u kullanın. Bu manuel bir arşivdir; Kaggle ve GitHub arasında otomatik eşitleme kurulmadı.
 
+**[Özgün Kaggle notebook'u — Drone Görüntüleri — 01 Veri İnceleme](https://www.kaggle.com/code/emirhanuludogan/drone-g-r-nt-leri-01-veri-nceleme)** · [Kaggle düzenleyicisi](https://www.kaggle.com/code/emirhanuludogan/drone-g-r-nt-leri-01-veri-nceleme/edit). Bu bağlantılar kullanıcının sağladığı adrese dayanır. Kaggle notebook'u private ise erişim yetkisi gerekir; GitHub'a bağlantı eklemek Kaggle paylaşım ayarını değiştirmez. Paylaşılabilir kod ve metin sonuçları yukarıdaki GitHub arşivinden okunabilir.
+
 Bu bilgisayarda masaüstündeki `UAV-Vision-Lab/Jupyter-Baslat.cmd` dosyasını çift tıklayın. `Proje` bağlantısı bu depodaki aynı dosyaları açar. Kaggle'da aynı `.ipynb` dosyasını **Import Notebook** ile yükleyip [resmî kaynak kopyasını](https://www.kaggle.com/datasets/emirhanuludogan/paaaaa) ekleyin. **Eğitim varsayılan olarak kapalıdır.** [Açılış, ortam, veri ve reset/resume rehberi](docs/notebook-kullanim.md).
 
 ## Mevcut durum — 24 Kasım 2026
