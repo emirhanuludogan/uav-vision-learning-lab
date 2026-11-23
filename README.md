@@ -1,18 +1,24 @@
 # UAV Vision Learning Lab
 
-Drone görüntülerinde **anlamsal bölütlemeyi (semantic segmentation)** adım adım öğrenmek için Türkçe çalışma günlüğü ve küçük, tekrar kullanılabilir araçlar. Anlamsal bölütleme, görüntüdeki her piksele bina, yol veya insan gibi bir sınıf atar. UAV, *Unmanned Aerial Vehicle* (insansız hava aracı) demektir.
+Drone görüntülerinde nesne tespiti, çevrenin **anlamsal bölütlenmesi (semantic segmentation)** ve hazır modellerin video/kamera akışına entegrasyonunu öğrenmek için Türkçe çalışma günlüğü ve araçlar. Anlamsal bölütleme her piksele bina, yol veya insan gibi bir sınıf; nesne tespiti ise tekil nesnelere konum kutuları atar. UAV, *Unmanned Aerial Vehicle* (insansız hava aracı) demektir.
 
 Bu repo üçüncü sınıf düzeyinde bir görüntü işleme öğrenme portföyüdür. Amaç; problem tanımı, veri güvenilirliği, deney tasarımı, değerlendirme ve hata analizini öğrenerek ileride staj ve TEKNOFEST başvurularında açıklanabilir bir çalışma sunmaktır. Kod geliştirmede yapay zekâ desteği kullanılır; deney kararlarının ve sonuçların anlaşılması öğrenme sürecinin merkezindedir.
+
+**Güncel yön:** hazır modelleri ücretsiz yerel kullanım koşullarıyla kayıtlı drone videosunda değerlendirmek, ardından canlı kamera akışına bağlamak. Kamera henüz yok; model ve örnek video henüz seçilip çalıştırılmadı. [Video entegrasyonu ve sonraki oturum planı](docs/video-integration-plan.md).
+
+**[Tarih sıralı günlük: 23 Kasım, 24 Kasım ve sonraki çalışmalar](docs/journal/README.md)**
 
 ## Notebook'u aç — yerel Jupyter veya Kaggle
 
 **[01_UAVid_Yerel_ve_Kaggle.ipynb](notebooks/01_UAVid_Yerel_ve_Kaggle.ipynb)** bütün kodu içerir: veri inceleme, letterbox dönüşümü, veri yükleyici, aynı başlangıç modeli, açık eğitim başlatma, checkpoint ve hata inceleme. Hücreleri sohbetten kopyalamak gerekmez.
 
+**[Kaggle'da gerçekten çalıştırılmış notebook arşivi](notebooks/archive/2026-11-24_kaggle_uavid_original.ipynb):** kullanıcıdan alınan kod hücreleri ve kayıtlı metin çıktıları korunur; bir gömülü veri görseli çıkarılmıştır. [Arşiv notları](notebooks/archive/README.md), [3 epoch sonuç tablosu](docs/experiments/2026-11-24_kaggle-baseline.csv), [eğitim logu](docs/experiments/2026-11-24_kaggle-training-log.txt). Arşivde Run All doğrudan eğitim başlatır; kontrollü kullanım için yukarıdaki taşınabilir notebook'u kullanın. Bu manuel bir arşivdir; Kaggle ve GitHub arasında otomatik eşitleme kurulmadı.
+
 Bu bilgisayarda masaüstündeki `UAV-Vision-Lab/Jupyter-Baslat.cmd` dosyasını çift tıklayın. `Proje` bağlantısı bu depodaki aynı dosyaları açar. Kaggle'da aynı `.ipynb` dosyasını **Import Notebook** ile yükleyip [resmî kaynak kopyasını](https://www.kaggle.com/datasets/emirhanuludogan/paaaaa) ekleyin. **Eğitim varsayılan olarak kapalıdır.** [Açılış, ortam, veri ve reset/resume rehberi](docs/notebook-kullanim.md).
 
 ## Mevcut durum — 24 Kasım 2026
 
-- Kaggle'daki `Drone Görüntüleri — 01 Veri İnceleme` çalışmasında bir UAVid topluluk kopyası incelendi. Bulgular kullanıcı tarafından paylaşılan çıktılara dayanır; özgün notebook bu repoda yoktur.
+- İlk ön incelemede UAVid topluluk kopyası kullanıldı; bu tarihsel gözlemler 23 Kasım kaydında tutulur. Kullanıcının sonradan indirdiği notebook ise resmî veri üzerindeki çalışmayı ve 3 epoch eğitim çıktısını içerir; şimdi ayrı arşiv dosyası olarak bu repodadır.
 - Kaynak sekansları belirsiz olan topluluk kopyası bırakıldı. Resmî UAVid image-only train/val ve README indirildi, Kaggle'a yüklendi. Veri lisansı ve yazar atıfları veri açıklamasında belirtiliyor.
 - Kullanıcının Kaggle çıktıları: train 20 sekans/200 çift, val 7 sekans/70 çift; 270 çiftte eksik eşleşme, okuma hatası, boyut farkı veya bilinmeyen RGB yok. İnceleme kapsamı ve sınıf dağılımları günlükte.
 - Kullanıcının Kaggle'da tamamladığı sıfırdan küçük modelin 3 epoch sonuçları aktarıldı: en iyi validation mIoU **0,046915 (%4,6915), epoch 1**. Son epoch'ta yalnız bina sınıfının IoU'su sıfırdan farklı. Bu ilk deney güçlü bir model değildir; kayıp azalırken mIoU artmamıştır.
@@ -38,11 +44,10 @@ Araç tüm PNG çiftlerini okumaya çalışır; sekans başına sayıları, eksi
 
 ## Sonraki adımlar
 
-1. En iyi Kaggle checkpoint'ini ve gerçek CSV'yi edinip sınıf haritasını doğrulamak; henüz dosyalara erişilmedi.
-2. Tahmin histogramı ve overlay ile bina ağırlıklı tahmin şüphesini sınamak; sabit bina referansını karşılaştırmak.
-3. Sekans kaynağı ve olası içerik örtüşmelerini ayrıca değerlendirmek; sınıf IoU'ları ve küçük nesne hatalarını incelemek.
-4. Her seferinde bir değişkeni değiştirerek kontrollü deney yapmak; sonuçları günlükte belgelemek.
-5. Rapor ve demo hazırlamak. Simülasyon daha sonraki fazdır.
+1. Örnek video ve hazır model ağırlığı için ücretsiz kullanım koşullarını doğrulamak; mevcut bilgisayarda kısa video tahmini üretmek.
+2. Aynı koşullarda adayların hızını ve etiketli örneklerde doğruluğunu karşılaştırmak; canlı kamera entegrasyonuna temel hazırlamak.
+3. Önceki deneyin en iyi Kaggle checkpoint'i ve özgün CSV'sini ayrıca arşivlemek; henüz bu dosyalara erişilmedi. Bina ağırlıklı tahmin şüphesi checkpoint geldiğinde histogram/overlay ile incelenebilir.
+4. Her çalışma gününü tarihli günlükte belgelemek; sonuçları ve sınırlamaları açıklayan demo/rapor hazırlamak. Simülasyon sonraki fazdır.
 
 ## Kaynaklar ve lisans
 

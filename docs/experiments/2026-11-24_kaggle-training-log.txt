@@ -1,0 +1,65 @@
+
+EPOCH 1/3
+  Eğitim: 10/50 paket
+  Eğitim: 20/50 paket
+  Eğitim: 30/50 paket
+  Eğitim: 40/50 paket
+  Eğitim: 50/50 paket
+  Doğrulama: 10/18 paket
+  Doğrulama: 18/18 paket
+Eğitim kaybı: 1.9672 | Doğrulama kaybı: 1.6941 | mIoU: %4.69 | Süre: 127 saniye
+Bu turun doğrulama IoU değerleri:
+  Diğer / karma bölgeler: %0.00
+  Bina: %33.49
+  Yol: %4.04
+  Ağaç: %0.00
+  Alçak bitki örtüsü: %0.00
+  Hareketli araç: %0.00
+  Park hâlindeki araç: %0.00
+  İnsan: %0.00
+
+EPOCH 2/3
+  Eğitim: 10/50 paket
+  Eğitim: 20/50 paket
+  Eğitim: 30/50 paket
+  Eğitim: 40/50 paket
+  Eğitim: 50/50 paket
+  Doğrulama: 10/18 paket
+  Doğrulama: 18/18 paket
+Eğitim kaybı: 1.6781 | Doğrulama kaybı: 1.6289 | mIoU: %4.29 | Süre: 129 saniye
+Bu turun doğrulama IoU değerleri:
+  Diğer / karma bölgeler: %0.00
+  Bina: %34.18
+  Yol: %0.00
+  Ağaç: %0.11
+  Alçak bitki örtüsü: %0.00
+  Hareketli araç: %0.00
+  Park hâlindeki araç: %0.00
+  İnsan: %0.00
+
+EPOCH 3/3
+  Eğitim: 10/50 paket
+  Eğitim: 20/50 paket
+  Eğitim: 30/50 paket
+  Eğitim: 40/50 paket
+  Eğitim: 50/50 paket
+  Doğrulama: 10/18 paket
+  Doğrulama: 18/18 paket
+Eğitim kaybı: 1.6575 | Doğrulama kaybı: 1.6215 | mIoU: %4.28 | Süre: 129 saniye
+Bu turun doğrulama IoU değerleri:
+  Diğer / karma bölgeler: %0.00
+  Bina: %34.27
+  Yol: %0.00
+  Ağaç: %0.00
+  Alçak bitki örtüsü: %0.00
+  Hareketli araç: %0.00
+  Park hâlindeki araç: %0.00
+  İnsan: %0.00
+
+EĞİTİM ÖZETİ
+ Epoch  Eğitim kaybı  Doğrulama kaybı  Doğrulama mIoU
+     1      1.967182         1.694091        0.046915
+     2      1.678143         1.628852        0.042865
+     3      1.657543         1.621466        0.042831
+
+En iyi model kaydı: /kaggle/working/baslangic_modeli_en_iyi.pt

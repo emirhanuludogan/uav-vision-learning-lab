@@ -1,0 +1,11 @@
+{
+  "source_filename": "drone-g-r-nt-leri-01-veri-nceleme.ipynb",
+  "source_sha256": "3ed2320e0430e93bb6088ba775198fbcaa886b79e242b774576016b0c022b975",
+  "archive_sha256": "e0cb7fe782a203f7fdb83491802af11d5a304a748d948413129e6967504e877f",
+  "archive": "notebooks/archive/2026-11-24_kaggle_uavid_original.ipynb",
+  "code_cells_unchanged": true,
+  "removed_embedded_image_outputs": 1,
+  "metrics_source": "Saved text summary in exported notebook cell 8; six decimal places, not original CSV file.",
+  "locally_reexecuted": false,
+  "checkpoint_received": false
+}
