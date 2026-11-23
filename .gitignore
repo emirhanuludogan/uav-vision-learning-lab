@@ -44,6 +44,9 @@ UAVid/
 *.npz
 reports/
 outputs/
+notebooks/outputs/
+*.executed.ipynb
+data/.uavid-partial-*/
 wandb/
 mlruns/
 .DS_Store

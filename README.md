@@ -4,14 +4,21 @@ Drone görüntülerinde **anlamsal bölütlemeyi (semantic segmentation)** adım
 
 Bu repo üçüncü sınıf düzeyinde bir görüntü işleme öğrenme portföyüdür. Amaç; problem tanımı, veri güvenilirliği, deney tasarımı, değerlendirme ve hata analizini öğrenerek ileride staj ve TEKNOFEST başvurularında açıklanabilir bir çalışma sunmaktır. Kod geliştirmede yapay zekâ desteği kullanılır; deney kararlarının ve sonuçların anlaşılması öğrenme sürecinin merkezindedir.
 
-## Mevcut durum — 23 Kasım 2026
+## Notebook'u aç — yerel Jupyter veya Kaggle
+
+**[01_UAVid_Yerel_ve_Kaggle.ipynb](notebooks/01_UAVid_Yerel_ve_Kaggle.ipynb)** bütün kodu içerir: veri inceleme, letterbox dönüşümü, veri yükleyici, aynı başlangıç modeli, açık eğitim başlatma, checkpoint ve hata inceleme. Hücreleri sohbetten kopyalamak gerekmez.
+
+Bu bilgisayarda masaüstündeki `UAV-Vision-Lab/Jupyter-Baslat.cmd` dosyasını çift tıklayın. `Proje` bağlantısı bu depodaki aynı dosyaları açar. Kaggle'da aynı `.ipynb` dosyasını **Import Notebook** ile yükleyip [resmî kaynak kopyasını](https://www.kaggle.com/datasets/emirhanuludogan/paaaaa) ekleyin. **Eğitim varsayılan olarak kapalıdır.** [Açılış, ortam, veri ve reset/resume rehberi](docs/notebook-kullanim.md).
+
+## Mevcut durum — 24 Kasım 2026
 
 - Kaggle'daki `Drone Görüntüleri — 01 Veri İnceleme` çalışmasında bir UAVid topluluk kopyası incelendi. Bulgular kullanıcı tarafından paylaşılan çıktılara dayanır; özgün notebook bu repoda yoktur.
-- Bir görüntü ve referans etiketi, sınıf dağılımı ve dosya adları incelendi. **Henüz model eğitilmedi veya model başarısı ölçülmedi.**
-- Kaynak sekansları belirsiz olan topluluk kopyası yerine resmî UAVid verisiyle devam etme kararı alındı.
-- Kullanıcının son bildirimine göre resmî doğrulama ZIP'i ve README indirildi, eğitim ZIP'i indiriliyordu. Paketlerin içeriği henüz doğrulanmadı ve resmî veri henüz Kaggle'a yüklenmedi.
+- Kaynak sekansları belirsiz olan topluluk kopyası bırakıldı. Resmî UAVid image-only train/val ve README indirildi, Kaggle'a yüklendi. Veri lisansı ve yazar atıfları veri açıklamasında belirtiliyor.
+- Kullanıcının Kaggle çıktıları: train 20 sekans/200 çift, val 7 sekans/70 çift; 270 çiftte eksik eşleşme, okuma hatası, boyut farkı veya bilinmeyen RGB yok. İnceleme kapsamı ve sınıf dağılımları günlükte.
+- Kullanıcının Kaggle'da tamamladığı sıfırdan küçük modelin 3 epoch sonuçları aktarıldı: en iyi validation mIoU **0,046915 (%4,6915), epoch 1**. Son epoch'ta yalnız bina sınıfının IoU'su sıfırdan farklı. Bu ilk deney güçlü bir model değildir; kayıp azalırken mIoU artmamıştır.
+- Önceki Kaggle checkpoint'i yerelde bulunmuyor; bu repo hazırlığında tam model eğitimi yeniden başlatılmadı. Yeni notebook eğitim ve çıktı dosyalarını benzersiz çalışma klasörlerine yazar.
 
-Gözlemler ve sınırları: [23 Kasım çalışma günlüğü](docs/journal/2026-11-23.md). Veri kaynağı ve kullanım koşulları: [veri kartı](docs/data-card.md).
+Gözlemler ve sınırları: [23 Kasım tarihsel ön inceleme](docs/journal/2026-11-23.md), [24 Kasım resmî veri ve baseline kaydı](docs/journal/2026-11-24.md). Veri kaynağı ve kullanım koşulları: [veri kartı](docs/data-card.md).
 
 ## Yerel aracı çalıştırma
 
@@ -31,9 +38,9 @@ Araç tüm PNG çiftlerini okumaya çalışır; sekans başına sayıları, eksi
 
 ## Sonraki adımlar
 
-1. Resmî train/val paketleri ve README'yi kontrol edip sürüm, dosya sayıları ve özgün sekans ayrımını kaydetmek; özel Kaggle verisi olarak hazırlamak. Test paketi şimdilik kapsam dışı.
-2. Sekans kaynağını ve olası örtüşmeleri değerlendirmek; ardından basit bir başlangıç modeli eğitmek.
-3. Sınıf başına IoU ve mIoU raporlamak, küçük nesnelerde hataları görselleştirmek.
+1. En iyi Kaggle checkpoint'ini ve gerçek CSV'yi edinip sınıf haritasını doğrulamak; henüz dosyalara erişilmedi.
+2. Tahmin histogramı ve overlay ile bina ağırlıklı tahmin şüphesini sınamak; sabit bina referansını karşılaştırmak.
+3. Sekans kaynağı ve olası içerik örtüşmelerini ayrıca değerlendirmek; sınıf IoU'ları ve küçük nesne hatalarını incelemek.
 4. Her seferinde bir değişkeni değiştirerek kontrollü deney yapmak; sonuçları günlükte belgelemek.
 5. Rapor ve demo hazırlamak. Simülasyon daha sonraki fazdır.
 
